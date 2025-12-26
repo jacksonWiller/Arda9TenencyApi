@@ -1,0 +1,22 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+	<PropertyGroup>
+		<TargetFramework>net8.0</TargetFramework>
+		<ImplicitUsings>enable</ImplicitUsings>
+		<Nullable>enable</Nullable>
+	</PropertyGroup>
+
+	<ItemGroup>
+		<PackageReference Include="AWSSDK.DynamoDBv2" Version="3.7.3.7" />
+		<PackageReference Include="AWSSDK.S3" Version="3.7.504.1" />
+		<PackageReference Include="AWSSDK.S3Control" Version="3.7.503.5" />
+		<PackageReference Include="AWSSDK.CognitoIdentityProvider" Version="3.7.103.27" />
+		<PackageReference Include="AWSSDK.SecretsManager" Version="3.7.103.69" />
+		<PackageReference Include="Microsoft.AspNetCore.Http.Abstractions" Version="2.2.0" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <ProjectReference Include="..\Arda9Template.Domain\Arda9Template.Domain.csproj" />
+	</ItemGroup>
+
+</Project>
