@@ -1,6 +1,6 @@
 using Arda9Template.Api.Models;
 using Arda9Template.Domain.Repositories;
-using Core.Results;
+using Ardalis.Result;
 using MediatR;
 using Microsoft.Extensions.Logging;
 
@@ -26,7 +26,7 @@ public class CreateTenantCommandHandler : IRequestHandler<CreateTenantCommand, R
             // Validar se o domínio já existe
             if (await _tenantRepository.DomainExistsAsync(request.Domain))
             {
-                return Result<CreateTenantResponse>.Failure("Domínio já está em uso");
+                return Result<CreateTenantResponse>.Error("Domínio já está em uso");
             }
 
             var tenant = new TenantModel
@@ -58,7 +58,7 @@ public class CreateTenantCommandHandler : IRequestHandler<CreateTenantCommand, R
         catch (Exception ex)
         {
             _logger.LogError(ex, "Erro ao criar tenant");
-            return Result<CreateTenantResponse>.Failure("Erro ao criar tenant");
+            return Result<CreateTenantResponse>.Error("Erro ao criar tenant");
         }
     }
 }

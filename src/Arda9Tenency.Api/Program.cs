@@ -149,7 +149,8 @@ builder.Services
 builder.Services
     .AddScoped<IBucketRepository, BucketRepository>()
     .AddScoped<IFileRepository, FileRepository>()
-    .AddScoped<IFolderRepository, FolderRepository>();
+    .AddScoped<IFolderRepository, FolderRepository>()
+    .AddScoped<ITenantRepository, TenantRepository>();
 
 // Registrar Services
 builder.Services

@@ -1,4 +1,4 @@
-using Core.Results;
+using Ardalis.Result;
 using MediatR;
 
 namespace Arda9Template.Api.Application.Tenants.Commands.CreateTenant;
