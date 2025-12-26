@@ -1,0 +1,13 @@
+using Core.Results;
+using MediatR;
+
+namespace Arda9Template.Api.Application.Tenants.Commands.CreateTenant;
+
+public class CreateTenantCommand : IRequest<Result<CreateTenantResponse>>
+{
+    public string Name { get; set; } = string.Empty;
+    public string Domain { get; set; } = string.Empty;
+    public string? PrimaryColor { get; set; }
+    public string? SecondaryColor { get; set; }
+    public string Plan { get; set; } = "basic"; // basic, pro, enterprise
+}

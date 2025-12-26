@@ -14,13 +14,13 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "docs", "docs", "{02EA681E-C7D8-13C7-8484-4AC65E1B71E8}"
 	ProjectSection(SolutionItems) = preProject
-		..\arda9-tenency-manager-app\doc\Api.md = ..\arda9-tenency-manager-app\doc\Api.md
 		docs\API_V1_EXAMPLES.md = docs\API_V1_EXAMPLES.md
 		docs\API_V1_IMPLEMENTATION.md = docs\API_V1_IMPLEMENTATION.md
 		docs\API_V1_QUICK_REFERENCE.md = docs\API_V1_QUICK_REFERENCE.md
 		docs\ARQUITETURA_CAMADAS_SAM.md = docs\ARQUITETURA_CAMADAS_SAM.md
 		docs\IMPLEMENTATION_SUMMARY.md = docs\IMPLEMENTATION_SUMMARY.md
 		docs\MIGRATION_GUIDE_V1_TO_MAIN.md = docs\MIGRATION_GUIDE_V1_TO_MAIN.md
+		docs\TENENCY_API_V1.md = docs\TENENCY_API_V1.md
 		docs\TROUBLESHOOTING_GET_BODY_ERROR.md = docs\TROUBLESHOOTING_GET_BODY_ERROR.md
 	EndProjectSection
 EndProject
