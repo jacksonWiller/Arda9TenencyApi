@@ -1,9 +1,9 @@
-//using Core.Results;
-//using MediatR;
+using Ardalis.Result;
+using MediatR;
 
-//namespace Arda9Template.Api.Application.Tenants.Queries.GetTenantById;
+namespace Arda9Template.Api.Application.Tenants.Queries.GetTenantById;
 
-//public class GetTenantByIdQuery : IRequest<Result<GetTenantByIdResponse>>
-//{
-//    public Guid Id { get; set; }
-//}
+public class GetTenantByIdQuery : IRequest<Result<GetTenantByIdResponse>>
+{
+    public Guid Id { get; set; }
+}

@@ -1,9 +1,9 @@
-//using Core.Results;
-//using MediatR;
+using Ardalis.Result;
+using MediatR;
 
-//namespace Arda9Template.Api.Application.Tenants.Commands.DeleteTenant;
+namespace Arda9Template.Api.Application.Tenants.Commands.DeleteTenant;
 
-//public class DeleteTenantCommand : IRequest<Result<bool>>
-//{
-//    public Guid Id { get; set; }
-//}
+public class DeleteTenantCommand : IRequest<Result<bool>>
+{
+    public Guid Id { get; set; }
+}

@@ -34,15 +34,15 @@ public class TenantsController : ControllerBase
     /// <response code="200">Tenants encontrados</response>
     /// <response code="401">Não autorizado</response>
     /// <response code="500">Erro interno</response>
-    //[HttpGet]
-    //[ProducesResponseType(typeof(GetAllTenantsResponse), StatusCodes.Status200OK)]
-    //[ProducesResponseType(StatusCodes.Status401Unauthorized)]
-    //[ProducesResponseType(StatusCodes.Status500InternalServerError)]
-    //public async Task<IActionResult> GetAllTenants([FromQuery] GetAllTenantsQuery query)
-    //{
-    //    var result = await _mediator.Send(query);
-    //    return result.ToActionResult();
-    //}
+    [HttpGet]
+    [ProducesResponseType(typeof(GetAllTenantsResponse), StatusCodes.Status200OK)]
+    [ProducesResponseType(StatusCodes.Status401Unauthorized)]
+    [ProducesResponseType(StatusCodes.Status500InternalServerError)]
+    public async Task<IActionResult> GetAllTenants([FromQuery] GetAllTenantsQuery query)
+    {
+        var result = await _mediator.Send(query);
+        return result.ToActionResult();
+    }
 
     /// <summary>
     /// Obtém detalhes de um tenant específico
@@ -52,16 +52,16 @@ public class TenantsController : ControllerBase
     /// <response code="200">Tenant encontrado</response>
     /// <response code="404">Tenant não encontrado</response>
     /// <response code="500">Erro interno</response>
-    //[HttpGet("{id}")]
-    //[ProducesResponseType(typeof(GetTenantByIdResponse), StatusCodes.Status200OK)]
-    //[ProducesResponseType(StatusCodes.Status404NotFound)]
-    //[ProducesResponseType(StatusCodes.Status500InternalServerError)]
-    //public async Task<IActionResult> GetTenantById(Guid id)
-    //{
-    //    var query = new GetTenantByIdQuery { Id = id };
-    //    var result = await _mediator.Send(query);
-    //    return result.ToActionResult();
-    //}
+    [HttpGet("{id}")]
+    [ProducesResponseType(typeof(GetTenantByIdResponse), StatusCodes.Status200OK)]
+    [ProducesResponseType(StatusCodes.Status404NotFound)]
+    [ProducesResponseType(StatusCodes.Status500InternalServerError)]
+    public async Task<IActionResult> GetTenantById(Guid id)
+    {
+        var query = new GetTenantByIdQuery { Id = id };
+        var result = await _mediator.Send(query);
+        return result.ToActionResult();
+    }
 
     /// <summary>
     /// Cria um novo tenant
@@ -92,18 +92,18 @@ public class TenantsController : ControllerBase
     /// <response code="400">Parâmetros inválidos</response>
     /// <response code="404">Tenant não encontrado</response>
     /// <response code="500">Erro interno</response>
-    //[HttpPatch("{id}")]
-    //[Consumes(MediaTypeNames.Application.Json)]
-    //[ProducesResponseType(typeof(UpdateTenantResponse), StatusCodes.Status200OK)]
-    //[ProducesResponseType(StatusCodes.Status400BadRequest)]
-    //[ProducesResponseType(StatusCodes.Status404NotFound)]
-    //[ProducesResponseType(StatusCodes.Status500InternalServerError)]
-    //public async Task<IActionResult> UpdateTenant(Guid id, [FromBody] UpdateTenantCommand command)
-    //{
-    //    command.Id = id;
-    //    var result = await _mediator.Send(command);
-    //    return result.ToActionResult();
-    //}
+    [HttpPatch("{id}")]
+    [Consumes(MediaTypeNames.Application.Json)]
+    [ProducesResponseType(typeof(UpdateTenantResponse), StatusCodes.Status200OK)]
+    [ProducesResponseType(StatusCodes.Status400BadRequest)]
+    [ProducesResponseType(StatusCodes.Status404NotFound)]
+    [ProducesResponseType(StatusCodes.Status500InternalServerError)]
+    public async Task<IActionResult> UpdateTenant(Guid id, [FromBody] UpdateTenantCommand command)
+    {
+        command.Id = id;
+        var result = await _mediator.Send(command);
+        return result.ToActionResult();
+    }
 
     /// <summary>
     /// Remove um tenant (soft delete)
@@ -113,16 +113,16 @@ public class TenantsController : ControllerBase
     /// <response code="200">Tenant removido com sucesso</response>
     /// <response code="404">Tenant não encontrado</response>
     /// <response code="500">Erro interno</response>
-    //[HttpDelete("{id}")]
-    //[ProducesResponseType(StatusCodes.Status200OK)]
-    //[ProducesResponseType(StatusCodes.Status404NotFound)]
-    //[ProducesResponseType(StatusCodes.Status500InternalServerError)]
-    //public async Task<IActionResult> DeleteTenant(Guid id)
-    //{
-    //    var command = new DeleteTenantCommand { Id = id };
-    //    var result = await _mediator.Send(command);
-    //    return result.ToActionResult();
-    //}
+    [HttpDelete("{id}")]
+    [ProducesResponseType(StatusCodes.Status200OK)]
+    [ProducesResponseType(StatusCodes.Status404NotFound)]
+    [ProducesResponseType(StatusCodes.Status500InternalServerError)]
+    public async Task<IActionResult> DeleteTenant(Guid id)
+    {
+        var command = new DeleteTenantCommand { Id = id };
+        var result = await _mediator.Send(command);
+        return result.ToActionResult();
+    }
 
     /// <summary>
     /// Upload de logo do tenant
@@ -134,21 +134,21 @@ public class TenantsController : ControllerBase
     /// <response code="400">Arquivo inválido</response>
     /// <response code="404">Tenant não encontrado</response>
     /// <response code="500">Erro interno</response>
-    //[HttpPost("{id}/logo")]
-    //[Consumes(MediaTypeNames.Multipart.FormData)]
-    //[ProducesResponseType(typeof(UploadLogoResponse), StatusCodes.Status200OK)]
-    //[ProducesResponseType(StatusCodes.Status400BadRequest)]
-    //[ProducesResponseType(StatusCodes.Status404NotFound)]
-    //[ProducesResponseType(StatusCodes.Status500InternalServerError)]
-    //public async Task<IActionResult> UploadLogo(Guid id, IFormFile file)
-    //{
-    //    var command = new UploadLogoCommand
-    //    {
-    //        TenantId = id,
-    //        File = file
-    //    };
+    [HttpPost("{id}/logo")]
+    [Consumes(MediaTypeNames.Multipart.FormData)]
+    [ProducesResponseType(typeof(UploadLogoResponse), StatusCodes.Status200OK)]
+    [ProducesResponseType(StatusCodes.Status400BadRequest)]
+    [ProducesResponseType(StatusCodes.Status404NotFound)]
+    [ProducesResponseType(StatusCodes.Status500InternalServerError)]
+    public async Task<IActionResult> UploadLogo(Guid id, IFormFile file)
+    {
+        var command = new UploadLogoCommand
+        {
+            TenantId = id,
+            File = file
+        };
 
-    //    var result = await _mediator.Send(command);
-    //    return result.ToActionResult();
-    //}
+        var result = await _mediator.Send(command);
+        return result.ToActionResult();
+    }
 }

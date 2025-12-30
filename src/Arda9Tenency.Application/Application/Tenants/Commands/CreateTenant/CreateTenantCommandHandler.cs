@@ -48,6 +48,7 @@ public class CreateTenantCommandHandler : IRequestHandler<CreateTenantCommand, R
                 Id = tenant.Id,
                 Name = tenant.Name,
                 Domain = tenant.Domain,
+                Logo = tenant.Logo,
                 Status = tenant.Status,
                 Plan = tenant.Plan,
                 CreatedAt = tenant.CreatedAt

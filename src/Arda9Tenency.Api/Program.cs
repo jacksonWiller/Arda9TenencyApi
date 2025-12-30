@@ -46,8 +46,8 @@ builder.Services.Configure<AwsCognitoConfig>(
 
 // Obter configuração do Cognito para usar na autenticação JWT
 var cognitoConfig = builder.Configuration.GetSection("AwsCognito").Get<AwsCognitoConfig>();
-var userPoolId = cognitoConfig?.UserPoolId ?? "us-east-1_tg7PHhZle";
-var region = cognitoConfig?.Region ?? "us-east-1";
+var userPoolId = cognitoConfig?.UserPoolId;
+var region = cognitoConfig?.Region;
 
 // Add services to the container.
 builder.Services
