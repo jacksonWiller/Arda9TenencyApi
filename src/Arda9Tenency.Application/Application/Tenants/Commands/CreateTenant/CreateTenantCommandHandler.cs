@@ -1,10 +1,10 @@
-using Arda9Template.Api.Models;
-using Arda9Template.Domain.Repositories;
+using Arda9Tenant.Api.Models;
+using Arda9Tenant.Domain.Repositories;
 using Ardalis.Result;
 using MediatR;
 using Microsoft.Extensions.Logging;
 
-namespace Arda9Template.Api.Application.Tenants.Commands.CreateTenant;
+namespace Arda9Tenant.Api.Application.Tenants.Commands.CreateTenant;
 
 public class CreateTenantCommandHandler : IRequestHandler<CreateTenantCommand, Result<CreateTenantResponse>>
 {
@@ -29,10 +29,17 @@ public class CreateTenantCommandHandler : IRequestHandler<CreateTenantCommand, R
                 return Result<CreateTenantResponse>.Error("Domínio já está em uso");
             }
 
+            // Validar se o TenantMasterId foi fornecido
+            if (string.IsNullOrWhiteSpace(request.TenantMasterId))
+            {
+                return Result<CreateTenantResponse>.Error("TenantMasterId é obrigatório");
+            }
+
             var tenant = new TenantModel
             {
                 Name = request.Name,
                 Domain = request.Domain,
+                TenantMaster = request.TenantMasterId,
                 PrimaryColor = request.PrimaryColor ?? "#0066cc",
                 SecondaryColor = request.SecondaryColor ?? "#4d94ff",
                 Plan = request.Plan,
@@ -41,13 +48,15 @@ public class CreateTenantCommandHandler : IRequestHandler<CreateTenantCommand, R
 
             await _tenantRepository.CreateAsync(tenant);
 
-            _logger.LogInformation("Tenant criado: {TenantId} - {TenantName}", tenant.Id, tenant.Name);
+            _logger.LogInformation("Tenant criado: {TenantId} - {TenantName} - TenantMaster: {TenantMaster}", 
+                tenant.Id, tenant.Name, tenant.TenantMaster);
 
             var response = new CreateTenantResponse
             {
                 Id = tenant.Id,
                 Name = tenant.Name,
                 Domain = tenant.Domain,
+                TenantMaster = tenant.TenantMaster,
                 Logo = tenant.Logo,
                 Status = tenant.Status,
                 Plan = tenant.Plan,

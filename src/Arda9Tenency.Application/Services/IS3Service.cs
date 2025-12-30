@@ -1,4 +1,4 @@
-namespace Arda9Template.Api.Services;
+namespace Arda9Tenant.Api.Services;
 
 public interface IS3Service
 {

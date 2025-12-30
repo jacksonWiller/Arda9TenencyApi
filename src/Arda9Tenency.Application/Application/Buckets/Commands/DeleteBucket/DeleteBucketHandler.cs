@@ -1,15 +1,15 @@
 using Amazon.S3;
 using Amazon.S3.Model;
-using Arda9Template.Domain.Repositories;
-using Arda9Template.Api.Application.Buckets.Commands.CreateBucket;
-using Arda9Template.Api.Repositories;
+using Arda9Tenant.Domain.Repositories;
+using Arda9Tenant.Api.Application.Buckets.Commands.CreateBucket;
+using Arda9Tenant.Api.Repositories;
 using Ardalis.Result;
 using Ardalis.Result.FluentValidation;
 using FluentValidation;
 using MediatR;
 using Microsoft.Extensions.Logging;
 
-namespace Arda9Template.Api.Application.Buckets.Commands.DeleteBucket;
+namespace Arda9Tenant.Api.Application.Buckets.Commands.DeleteBucket;
 
 public class DeleteBucketHandler : IRequestHandler<DeleteBucketCommand, Result>
 {

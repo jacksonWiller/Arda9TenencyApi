@@ -1,6 +1,6 @@
 using Amazon.DynamoDBv2.DataModel;
 
-namespace Arda9Template.Api.Core.Infra;
+namespace Arda9Tenant.Api.Core.Infra;
 
 /// <summary>
 /// Base class for all entities in the single table design

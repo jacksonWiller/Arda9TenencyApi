@@ -1,7 +1,8 @@
 using Ardalis.Result;
 using MediatR;
+using System.Text.Json.Serialization;
 
-namespace Arda9Template.Api.Application.Tenants.Commands.CreateTenant;
+namespace Arda9Tenant.Api.Application.Tenants.Commands.CreateTenant;
 
 public class CreateTenantCommand : IRequest<Result<CreateTenantResponse>>
 {
@@ -10,4 +11,5 @@ public class CreateTenantCommand : IRequest<Result<CreateTenantResponse>>
     public string? PrimaryColor { get; set; }
     public string? SecondaryColor { get; set; }
     public string Plan { get; set; } = "basic"; // basic, pro, enterprise
+    
 }

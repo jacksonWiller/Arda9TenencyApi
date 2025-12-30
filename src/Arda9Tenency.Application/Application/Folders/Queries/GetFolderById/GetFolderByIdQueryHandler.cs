@@ -1,10 +1,10 @@
 using Ardalis.Result;
 using MediatR;
-using Arda9Template.Api.Repositories;
-using Arda9Template.Api.Models;
+using Arda9Tenant.Api.Repositories;
+using Arda9Tenant.Api.Models;
 using Microsoft.Extensions.Logging;
 
-namespace Arda9Template.Api.Application.Folders.Queries.GetFolderById;
+namespace Arda9Tenant.Api.Application.Folders.Queries.GetFolderById;
 
 public class GetFolderByIdQueryHandler : IRequestHandler<GetFolderByIdQuery, Result<FolderModel>>
 {

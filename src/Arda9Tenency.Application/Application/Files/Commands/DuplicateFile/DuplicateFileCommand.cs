@@ -1,7 +1,7 @@
 using Ardalis.Result;
 using MediatR;
 
-namespace Arda9Template.Api.Application.Files.Commands.DuplicateFile;
+namespace Arda9Tenant.Api.Application.Files.Commands.DuplicateFile;
 
 public class DuplicateFileCommand : IRequest<Result<DuplicateFileResponse>>
 {

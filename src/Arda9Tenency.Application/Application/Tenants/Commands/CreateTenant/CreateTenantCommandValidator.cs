@@ -1,6 +1,6 @@
 using FluentValidation;
 
-namespace Arda9Template.Api.Application.Tenants.Commands.CreateTenant;
+namespace Arda9Tenant.Api.Application.Tenants.Commands.CreateTenant;
 
 public class CreateTenantCommandValidator : AbstractValidator<CreateTenantCommand>
 {
@@ -19,6 +19,9 @@ public class CreateTenantCommandValidator : AbstractValidator<CreateTenantComman
             .NotEmpty().WithMessage("Plano é obrigatório")
             .Must(plan => new[] { "basic", "pro", "enterprise" }.Contains(plan))
             .WithMessage("Plano deve ser: basic, pro ou enterprise");
+
+        RuleFor(x => x.TenantMasterId)
+            .NotEmpty().WithMessage("TenantMasterId é obrigatório");
 
         RuleFor(x => x.PrimaryColor)
             .Matches(@"^#[0-9A-Fa-f]{6}$")

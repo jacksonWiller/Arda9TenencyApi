@@ -1,6 +1,6 @@
-using Arda9Template.Api.Models;
+using Arda9Tenant.Api.Models;
 
-namespace Arda9Template.Api.Application.Files.Commands.UpdateFile;
+namespace Arda9Tenant.Api.Application.Files.Commands.UpdateFile;
 
 public class UpdateFileResponse
 {

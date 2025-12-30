@@ -5,9 +5,9 @@ using Amazon.DynamoDBv2.DataModel;
 using Amazon.S3;
 using Amazon.S3Control;
 using Amazon.SecretsManager;
-using Arda9Template.Api.Repositories;
-using Arda9Template.Api.Services;
-using Arda9Template.Domain.Repositories;
+using Arda9Tenant.Api.Repositories;
+using Arda9Tenant.Api.Services;
+using Arda9Tenant.Domain.Repositories;
 using Core.Application.Behaviors;
 using Core.Configuration;
 using FluentValidation;
@@ -16,7 +16,7 @@ using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
 using System.Reflection;
 using System.Text.Json;
-using Arda9Template.Api.Application.Tenants.Commands.CreateTenant;
+using Arda9Tenant.Api.Application.Tenants.Commands.CreateTenant;
 
 
 var builder = WebApplication.CreateBuilder(args);

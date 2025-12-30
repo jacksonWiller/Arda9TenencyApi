@@ -1,11 +1,11 @@
-using Arda9Template.Domain.Repositories;
-using Arda9Template.Api.Models;
-using Arda9Template.Api.Repositories;
+using Arda9Tenant.Domain.Repositories;
+using Arda9Tenant.Api.Models;
+using Arda9Tenant.Api.Repositories;
 using Ardalis.Result;
 using MediatR;
 using Microsoft.Extensions.Logging;
 
-namespace Arda9Template.Api.Application.Folders.Commands.CreateFolder;
+namespace Arda9Tenant.Api.Application.Folders.Commands.CreateFolder;
 
 public class CreateFolderCommandHandler : IRequestHandler<CreateFolderCommand, Result<CreateFolderResponse>>
 {

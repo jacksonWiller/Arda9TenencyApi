@@ -2,7 +2,7 @@
 
 using Core.Application.Common.Models;
 
-namespace Arda9Template.Api.Application.Files.Queries.GetFiles;
+namespace Arda9Tenant.Api.Application.Files.Queries.GetFiles;
 
 public class GetFilesResponse
 {

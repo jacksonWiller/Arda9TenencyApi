@@ -1,4 +1,4 @@
-namespace Arda9Template.Api.Application.Folders.Queries.GetFolders;
+namespace Arda9Tenant.Api.Application.Folders.Queries.GetFolders;
 
 public class GetFoldersResponse
 {

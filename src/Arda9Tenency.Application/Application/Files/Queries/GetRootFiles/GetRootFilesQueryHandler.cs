@@ -1,12 +1,12 @@
 using Ardalis.Result;
 using MediatR;
-using Arda9Template.Api.Repositories;
-using Arda9Template.Api.Models;
-using Arda9Template.Domain.Repositories;
+using Arda9Tenant.Api.Repositories;
+using Arda9Tenant.Api.Models;
+using Arda9Tenant.Domain.Repositories;
 using Microsoft.Extensions.Logging;
 using Arda9FileApi.Application.Files.Queries.GetRootFiles;
 
-namespace Arda9Template.Api.Application.Files.Queries.GetRootFiles;
+namespace Arda9Tenant.Api.Application.Files.Queries.GetRootFiles;
 
 public class GetRootFilesQueryHandler : IRequestHandler<GetRootFilesQuery, Result<List<FileMetadataModel>>>
 {

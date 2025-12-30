@@ -3,8 +3,8 @@ using Ardalis.Result;
 using MediatR;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Logging;
-using Arda9Template.Domain.Repositories;
-using Arda9Template.Api.Application.Buckets.Queries.GetAllBuckets;
+using Arda9Tenant.Domain.Repositories;
+using Arda9Tenant.Api.Application.Buckets.Queries.GetAllBuckets;
 
 namespace Arda9FileApi.Application.Buckets.Queries.GetAllBuckets;
 

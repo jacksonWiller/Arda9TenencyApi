@@ -3,7 +3,7 @@ using Amazon.S3.Model;
 using Microsoft.Extensions.Logging;
 using System.Text.Json;
 
-namespace Arda9Template.Api.Services;
+namespace Arda9Tenant.Api.Services;
 
 public class S3Service : IS3Service
 {

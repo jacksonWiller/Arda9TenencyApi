@@ -1,9 +1,9 @@
 using Ardalis.Result;
 using MediatR;
-using Arda9Template.Api.Repositories;
+using Arda9Tenant.Api.Repositories;
 using Microsoft.Extensions.Logging;
 
-namespace Arda9Template.Api.Application.Files.Commands.RestoreFile;
+namespace Arda9Tenant.Api.Application.Files.Commands.RestoreFile;
 
 public class RestoreFileCommandHandler : IRequestHandler<RestoreFileCommand, Result<RestoreFileResponse>>
 {

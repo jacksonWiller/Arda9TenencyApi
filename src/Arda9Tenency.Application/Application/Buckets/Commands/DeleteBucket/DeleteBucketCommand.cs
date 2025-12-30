@@ -1,7 +1,7 @@
 using Ardalis.Result;
 using MediatR;
 
-namespace Arda9Template.Api.Application.Buckets.Commands.DeleteBucket;
+namespace Arda9Tenant.Api.Application.Buckets.Commands.DeleteBucket;
 
 public class DeleteBucketCommand : IRequest<Result>
 {

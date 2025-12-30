@@ -1,7 +1,7 @@
 using Amazon.DynamoDBv2.DataModel;
-using Arda9Template.Api.Core.Infra;
+using Arda9Tenant.Api.Core.Infra;
 
-namespace Arda9Template.Api.Models;
+namespace Arda9Tenant.Api.Models;
 
 /// <summary>
 /// DTO for Tenant with DynamoDB single table design
@@ -23,6 +23,9 @@ public class TenantModel : DynamoSingleTableEntity
 
     [DynamoDBProperty]
     public string Name { get; set; } = string.Empty;
+
+    [DynamoDBProperty]
+    public string TenantMaster { get; set; } = string.Empty;
 
     [DynamoDBProperty]
     public string Domain { get; set; } = string.Empty;

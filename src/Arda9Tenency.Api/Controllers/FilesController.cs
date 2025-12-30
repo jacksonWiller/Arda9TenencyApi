@@ -1,19 +1,19 @@
 using Arda9FileApi.Application.Files.Commands.DeleteFile;
 using Arda9FileApi.Application.Files.Commands.UpdateFile;
 using Arda9FileApi.Application.Files.Queries.GetRootFiles;
-using Arda9Template.Api.Application.Files.Commands.DeleteFile;
-using Arda9Template.Api.Application.Files.Commands.DuplicateFile;
-using Arda9Template.Api.Application.Files.Commands.MoveFile;
-using Arda9Template.Api.Application.Files.Commands.RestoreFile;
-using Arda9Template.Api.Application.Files.Commands.UpdateFile;
-using Arda9Template.Api.Application.Files.Commands.UploadFile;
-using Arda9Template.Api.Application.Files.Queries.DownloadFile;
-using Arda9Template.Api.Application.Files.Queries.GetFileById;
-using Arda9Template.Api.Application.Files.Queries.GetFileDownloadUrl;
-using Arda9Template.Api.Application.Files.Queries.GetFiles;
-using Arda9Template.Api.Application.Files.Queries.GetFilesByBucket;
-using Arda9Template.Api.Application.Files.Queries.GetFilesByFolder;
-using Arda9Template.Api.Application.Files.Queries.GetRootFiles;
+using Arda9Tenant.Api.Application.Files.Commands.DeleteFile;
+using Arda9Tenant.Api.Application.Files.Commands.DuplicateFile;
+using Arda9Tenant.Api.Application.Files.Commands.MoveFile;
+using Arda9Tenant.Api.Application.Files.Commands.RestoreFile;
+using Arda9Tenant.Api.Application.Files.Commands.UpdateFile;
+using Arda9Tenant.Api.Application.Files.Commands.UploadFile;
+using Arda9Tenant.Api.Application.Files.Queries.DownloadFile;
+using Arda9Tenant.Api.Application.Files.Queries.GetFileById;
+using Arda9Tenant.Api.Application.Files.Queries.GetFileDownloadUrl;
+using Arda9Tenant.Api.Application.Files.Queries.GetFiles;
+using Arda9Tenant.Api.Application.Files.Queries.GetFilesByBucket;
+using Arda9Tenant.Api.Application.Files.Queries.GetFilesByFolder;
+using Arda9Tenant.Api.Application.Files.Queries.GetRootFiles;
 using Core.Api.Extensions;
 using MediatR;
 using Microsoft.AspNetCore.Authorization;
@@ -21,7 +21,7 @@ using Microsoft.AspNetCore.Mvc;
 using System.Net.Mime;
 
 
-namespace Arda9Template.Api.Controllers;
+namespace Arda9Tenant.Api.Controllers;
 
 [ApiController]
 [Route("api/[controller]")]

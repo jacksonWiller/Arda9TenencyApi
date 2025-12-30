@@ -1,6 +1,6 @@
 using Amazon.DynamoDBv2.DataModel;
 
-namespace Arda9Template.Api.Models;
+namespace Arda9Tenant.Api.Models;
 
 /// <summary>
 /// DTO para representar uma Tag nas respostas da API e persistência no DynamoDB

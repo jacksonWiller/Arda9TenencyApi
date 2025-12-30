@@ -1,4 +1,4 @@
-namespace Arda9Template.Api.Application.Folders.Commands.MoveFolder;
+namespace Arda9Tenant.Api.Application.Folders.Commands.MoveFolder;
 
 public class MoveFolderResponse
 {

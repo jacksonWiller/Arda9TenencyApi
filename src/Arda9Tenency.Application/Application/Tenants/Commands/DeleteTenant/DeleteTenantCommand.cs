@@ -1,7 +1,7 @@
 using Ardalis.Result;
 using MediatR;
 
-namespace Arda9Template.Api.Application.Tenants.Commands.DeleteTenant;
+namespace Arda9Tenant.Api.Application.Tenants.Commands.DeleteTenant;
 
 public class DeleteTenantCommand : IRequest<Result<bool>>
 {

@@ -2,7 +2,7 @@ using Ardalis.Result;
 using Microsoft.AspNetCore.Mvc;
 using IResult = Ardalis.Result.IResult;
 
-namespace Arda9Template.Core.Api.Models;
+namespace Arda9Tenant.Core.Api.Models;
 
 internal static class ResultExtensions
 {

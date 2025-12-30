@@ -1,9 +1,9 @@
 using Ardalis.Result;
 using MediatR;
-using Arda9Template.Api.Repositories;
+using Arda9Tenant.Api.Repositories;
 using Microsoft.Extensions.Logging;
 
-namespace Arda9Template.Api.Application.Folders.Commands.DeleteFolder;
+namespace Arda9Tenant.Api.Application.Folders.Commands.DeleteFolder;
 
 public class DeleteFolderCommandHandler : IRequestHandler<DeleteFolderCommand, Result>
 {

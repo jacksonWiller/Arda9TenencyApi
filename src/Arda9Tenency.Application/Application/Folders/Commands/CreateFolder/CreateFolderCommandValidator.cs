@@ -1,6 +1,6 @@
 using FluentValidation;
 
-namespace Arda9Template.Api.Application.Folders.Commands.CreateFolder;
+namespace Arda9Tenant.Api.Application.Folders.Commands.CreateFolder;
 
 public class CreateFolderCommandValidator : AbstractValidator<CreateFolderCommand>
 {

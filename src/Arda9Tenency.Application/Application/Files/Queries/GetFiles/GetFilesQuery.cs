@@ -1,7 +1,7 @@
 using Ardalis.Result;
 using MediatR;
 
-namespace Arda9Template.Api.Application.Files.Queries.GetFiles;
+namespace Arda9Tenant.Api.Application.Files.Queries.GetFiles;
 
 public class GetFilesQuery : IRequest<Result<GetFilesResponse>>
 {

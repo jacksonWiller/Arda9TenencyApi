@@ -1,7 +1,7 @@
 using Microsoft.AspNetCore.Http;
 using System.Security.Claims;
 
-namespace Arda9Template.Api.Services;
+namespace Arda9Tenant.Api.Services;
 
 public class CurrentUserService : ICurrentUserService
 {

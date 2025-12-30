@@ -2,7 +2,7 @@ using Core.Domain;
 using System;
 using System.Collections.Generic;
 
-namespace Arda9Template.Api.Core.Domain;
+namespace Arda9Tenant.Api.Core.Domain;
 
 /// <summary>
 /// Represents an abstract base entity class.

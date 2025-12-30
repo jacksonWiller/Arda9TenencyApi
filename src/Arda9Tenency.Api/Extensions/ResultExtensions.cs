@@ -1,4 +1,4 @@
-using Arda9Template.Core.Api.Models;
+using Arda9Tenant.Core.Api.Models;
 using Ardalis.Result;
 using Microsoft.AspNetCore.Mvc;
 using IResult = Ardalis.Result.IResult;

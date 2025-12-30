@@ -1,6 +1,6 @@
-using Arda9Template.Api.Models;
+using Arda9Tenant.Api.Models;
 
-namespace Arda9Template.Api.Repositories;
+namespace Arda9Tenant.Api.Repositories;
 
 public interface IFolderRepository
 {

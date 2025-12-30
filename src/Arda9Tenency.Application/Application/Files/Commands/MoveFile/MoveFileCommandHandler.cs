@@ -1,11 +1,11 @@
 using Ardalis.Result;
 using MediatR;
-using Arda9Template.Api.Repositories;
-using Arda9Template.Api.Services;
+using Arda9Tenant.Api.Repositories;
+using Arda9Tenant.Api.Services;
 using Microsoft.Extensions.Logging;
 using Arda9FileApi.Application.Files.Commands.MoveFile;
 
-namespace Arda9Template.Api.Application.Files.Commands.MoveFile;
+namespace Arda9Tenant.Api.Application.Files.Commands.MoveFile;
 
 public class MoveFileCommandHandler : IRequestHandler<MoveFileCommand, Result<MoveFileResponse>>
 {

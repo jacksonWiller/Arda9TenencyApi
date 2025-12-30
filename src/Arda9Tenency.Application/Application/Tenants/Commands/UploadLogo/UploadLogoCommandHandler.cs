@@ -1,9 +1,9 @@
-using Arda9Template.Domain.Repositories;
+using Arda9Tenant.Domain.Repositories;
 using Ardalis.Result;
 using MediatR;
 using Microsoft.Extensions.Logging;
 
-namespace Arda9Template.Api.Application.Tenants.Commands.UploadLogo;
+namespace Arda9Tenant.Api.Application.Tenants.Commands.UploadLogo;
 
 public class UploadLogoCommandHandler : IRequestHandler<UploadLogoCommand, Result<UploadLogoResponse>>
 {

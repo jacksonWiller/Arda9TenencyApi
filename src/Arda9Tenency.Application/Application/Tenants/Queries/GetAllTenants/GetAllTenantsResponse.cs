@@ -1,4 +1,4 @@
-namespace Arda9Template.Api.Application.Tenants.Queries.GetAllTenants;
+namespace Arda9Tenant.Api.Application.Tenants.Queries.GetAllTenants;
 
 public class GetAllTenantsResponse
 {

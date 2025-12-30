@@ -1,8 +1,8 @@
 using Ardalis.Result;
 using MediatR;
-using Arda9Template.Api.Models;
+using Arda9Tenant.Api.Models;
 
-namespace Arda9Template.Api.Application.Folders.Queries.GetFolderById;
+namespace Arda9Tenant.Api.Application.Folders.Queries.GetFolderById;
 
 public class GetFolderByIdQuery : IRequest<Result<FolderModel>>
 {

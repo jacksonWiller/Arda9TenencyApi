@@ -1,4 +1,4 @@
-using Arda9Template.Api.Application.Files.Commands.UpdateFile;
+using Arda9Tenant.Api.Application.Files.Commands.UpdateFile;
 using Ardalis.Result;
 using MediatR;
 using System.Text.Json.Serialization;

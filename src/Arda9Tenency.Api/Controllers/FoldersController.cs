@@ -1,17 +1,17 @@
-using Arda9Template.Api.Application.Folders.Commands.DeleteFolder;
-using Arda9Template.Api.Application.Folders.Queries.GetFolderById;
-using Arda9Template.Api.Application.Folders.Queries.GetFoldersByBucket;
-using Arda9Template.Api.Application.Folders.Queries.GetFoldersByParent;
+using Arda9Tenant.Api.Application.Folders.Commands.DeleteFolder;
+using Arda9Tenant.Api.Application.Folders.Queries.GetFolderById;
+using Arda9Tenant.Api.Application.Folders.Queries.GetFoldersByBucket;
+using Arda9Tenant.Api.Application.Folders.Queries.GetFoldersByParent;
 using MediatR;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using Arda9Template.Api.Application.Folders.Commands.CreateFolder;
-using Arda9Template.Api.Application.Folders.Commands.MoveFolder;
-using Arda9Template.Api.Application.Folders.Commands.UpdateFolder;
-using Arda9Template.Api.Application.Folders.Queries.GetFolders;
+using Arda9Tenant.Api.Application.Folders.Commands.CreateFolder;
+using Arda9Tenant.Api.Application.Folders.Commands.MoveFolder;
+using Arda9Tenant.Api.Application.Folders.Commands.UpdateFolder;
+using Arda9Tenant.Api.Application.Folders.Queries.GetFolders;
 using Core.Api.Extensions;
 
-namespace Arda9Template.Api.Controllers;
+namespace Arda9Tenant.Api.Controllers;
 
 [ApiController]
 [Route("api/[controller]")]

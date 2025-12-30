@@ -1,10 +1,10 @@
 using Ardalis.Result;
 using MediatR;
-using Arda9Template.Domain.Repositories;
+using Arda9Tenant.Domain.Repositories;
 using Microsoft.Extensions.Logging;
 using Arda9FileApi.Application.Buckets.Queries.GetBucketById;
 
-namespace Arda9Template.Api.Application.Buckets.Queries.GetBucketById;
+namespace Arda9Tenant.Api.Application.Buckets.Queries.GetBucketById;
 
 public class GetBucketByIdHandler : IRequestHandler<GetBucketByIdQuery, Result<GetBucketByIdResponse>>
 {

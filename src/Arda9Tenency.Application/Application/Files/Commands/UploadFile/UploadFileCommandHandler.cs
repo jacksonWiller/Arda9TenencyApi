@@ -1,16 +1,16 @@
 using Amazon.S3;
-using Arda9Template.Domain.Repositories;
-using Arda9Template.Api.Application.Buckets.Commands.CreateBucket;
-using Arda9Template.Api.Models;
-using Arda9Template.Api.Repositories;
-using Arda9Template.Api.Services;
+using Arda9Tenant.Domain.Repositories;
+using Arda9Tenant.Api.Application.Buckets.Commands.CreateBucket;
+using Arda9Tenant.Api.Models;
+using Arda9Tenant.Api.Repositories;
+using Arda9Tenant.Api.Services;
 using Ardalis.Result;
 using FluentValidation;
 using MediatR;
 using Microsoft.Extensions.Logging;
 using Arda9FileApi.Application.Files.Commands.UploadFile;
 
-namespace Arda9Template.Api.Application.Files.Commands.UploadFile;
+namespace Arda9Tenant.Api.Application.Files.Commands.UploadFile;
 
 public class UploadFileCommandHandler : IRequestHandler<UploadFileCommand, Result<UploadFileResponse>>
 {

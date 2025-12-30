@@ -1,7 +1,7 @@
 using Amazon.DynamoDBv2.DataModel;
-using Arda9Template.Api.Core.Infra;
+using Arda9Tenant.Api.Core.Infra;
 
-namespace Arda9Template.Api.Models;
+namespace Arda9Tenant.Api.Models;
 
 /// <summary>
 /// DTO for File Metadata with DynamoDB single table design

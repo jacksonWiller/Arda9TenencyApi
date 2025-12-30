@@ -1,7 +1,7 @@
 using Arda9FileApi.Application.Files.Commands.UpdateFile;
 using FluentValidation;
 
-namespace Arda9Template.Api.Application.Files.Commands.UpdateFile;
+namespace Arda9Tenant.Api.Application.Files.Commands.UpdateFile;
 
 public class UpdateFileCommandValidator : AbstractValidator<UpdateFileCommand>
 {

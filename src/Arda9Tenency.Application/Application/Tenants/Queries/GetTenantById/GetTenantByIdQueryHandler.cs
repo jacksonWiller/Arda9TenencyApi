@@ -1,5 +1,5 @@
-using Arda9Template.Api.Application.Tenants.Queries.GetTenantById;
-using Arda9Template.Domain.Repositories;
+using Arda9Tenant.Api.Application.Tenants.Queries.GetTenantById;
+using Arda9Tenant.Domain.Repositories;
 using Ardalis.Result;
 using MediatR;
 using Microsoft.Extensions.Logging;

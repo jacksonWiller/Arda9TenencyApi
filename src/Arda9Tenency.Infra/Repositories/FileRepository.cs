@@ -1,9 +1,9 @@
 using Amazon.DynamoDBv2.DataModel;
 using Amazon.DynamoDBv2.DocumentModel;
-using Arda9Template.Api.Models;
+using Arda9Tenant.Api.Models;
 using Microsoft.Extensions.Logging;
 
-namespace Arda9Template.Api.Repositories;
+namespace Arda9Tenant.Api.Repositories;
 
 public class FileRepository : IFileRepository
 {

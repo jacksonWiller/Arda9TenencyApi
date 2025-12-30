@@ -1,7 +1,7 @@
 using Ardalis.Result;
 using MediatR;
 
-namespace Arda9Template.Api.Application.Folders.Commands.MoveFolder;
+namespace Arda9Tenant.Api.Application.Folders.Commands.MoveFolder;
 
 public class MoveFolderCommand : IRequest<Result<MoveFolderResponse>>
 {

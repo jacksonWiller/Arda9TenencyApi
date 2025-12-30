@@ -1,4 +1,4 @@
-using Arda9Template.Api.Models;
+using Arda9Tenant.Api.Models;
 
 namespace Arda9FileApi.Application.Files.Commands.UploadFile;
 

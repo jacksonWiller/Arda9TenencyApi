@@ -1,4 +1,4 @@
-using Arda9Template.Api.Application.Buckets.Queries.GetBucketById;
+using Arda9Tenant.Api.Application.Buckets.Queries.GetBucketById;
 using Ardalis.Result;
 using MediatR;
 

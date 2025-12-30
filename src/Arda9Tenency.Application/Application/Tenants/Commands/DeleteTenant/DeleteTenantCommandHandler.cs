@@ -1,9 +1,9 @@
-using Arda9Template.Domain.Repositories;
+using Arda9Tenant.Domain.Repositories;
 using Ardalis.Result;
 using MediatR;
 using Microsoft.Extensions.Logging;
 
-namespace Arda9Template.Api.Application.Tenants.Commands.DeleteTenant;
+namespace Arda9Tenant.Api.Application.Tenants.Commands.DeleteTenant;
 
 public class DeleteTenantCommandHandler : IRequestHandler<DeleteTenantCommand, Result<bool>>
 {

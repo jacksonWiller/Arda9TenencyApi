@@ -1,11 +1,11 @@
 using Ardalis.Result;
 using MediatR;
-using Arda9Template.Api.Repositories;
-using Arda9Template.Api.Services;
+using Arda9Tenant.Api.Repositories;
+using Arda9Tenant.Api.Services;
 using Microsoft.Extensions.Logging;
 using Core.Application.Common.Models;
 
-namespace Arda9Template.Api.Application.Files.Queries.GetFiles;
+namespace Arda9Tenant.Api.Application.Files.Queries.GetFiles;
 
 public class GetFilesQueryHandler : IRequestHandler<GetFilesQuery, Result<GetFilesResponse>>
 {

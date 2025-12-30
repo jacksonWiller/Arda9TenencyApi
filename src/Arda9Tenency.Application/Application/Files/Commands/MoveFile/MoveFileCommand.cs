@@ -2,7 +2,7 @@ using Arda9FileApi.Application.Files.Commands.MoveFile;
 using Ardalis.Result;
 using MediatR;
 
-namespace Arda9Template.Api.Application.Files.Commands.MoveFile;
+namespace Arda9Tenant.Api.Application.Files.Commands.MoveFile;
 
 public class MoveFileCommand : IRequest<Result<MoveFileResponse>>
 {

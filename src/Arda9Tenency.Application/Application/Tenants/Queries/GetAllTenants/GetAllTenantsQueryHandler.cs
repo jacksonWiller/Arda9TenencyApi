@@ -1,9 +1,9 @@
-using Arda9Template.Domain.Repositories;
+using Arda9Tenant.Domain.Repositories;
 using Ardalis.Result;
 using MediatR;
 using Microsoft.Extensions.Logging;
 
-namespace Arda9Template.Api.Application.Tenants.Queries.GetAllTenants;
+namespace Arda9Tenant.Api.Application.Tenants.Queries.GetAllTenants;
 
 public class GetAllTenantsQueryHandler : IRequestHandler<GetAllTenantsQuery, Result<GetAllTenantsResponse>>
 {

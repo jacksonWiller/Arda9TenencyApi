@@ -1,7 +1,7 @@
 using Ardalis.Result;
 using MediatR;
 
-namespace Arda9Template.Api.Application.Tenants.Commands.UploadLogo;
+namespace Arda9Tenant.Api.Application.Tenants.Commands.UploadLogo;
 
 public class UploadLogoCommand : IRequest<Result<UploadLogoResponse>>
 {

@@ -1,6 +1,6 @@
 using Amazon.DynamoDBv2.DataModel;
 
-namespace Arda9Template.Domain.Models;
+namespace Arda9Tenant.Domain.Models;
 
 public class AddressModel
 {
