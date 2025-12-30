@@ -11,7 +11,7 @@
 	</ItemGroup>
 
 	<ItemGroup>
-	  <ProjectReference Include="..\Arda9Tenency.Core\Arda9Tenency.Core.csproj" />
+	  <ProjectReference Include="..\Arda9Tenant.Core\Arda9Tenant.Core.csproj" />
 	</ItemGroup>
 
 </Project>

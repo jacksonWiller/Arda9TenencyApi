@@ -1,4 +1,5 @@
 using Arda9Tenant.Api.Models;
+using Arda9Tenant.Api.Services;
 using Arda9Tenant.Domain.Repositories;
 using Ardalis.Result;
 using MediatR;
@@ -9,13 +10,16 @@ namespace Arda9Tenant.Api.Application.Tenants.Commands.CreateTenant;
 public class CreateTenantCommandHandler : IRequestHandler<CreateTenantCommand, Result<CreateTenantResponse>>
 {
     private readonly ITenantRepository _tenantRepository;
+    private readonly ICurrentUserService _currentUserService;
     private readonly ILogger<CreateTenantCommandHandler> _logger;
 
     public CreateTenantCommandHandler(
         ITenantRepository tenantRepository,
+        ICurrentUserService currentUserService,
         ILogger<CreateTenantCommandHandler> logger)
     {
         _tenantRepository = tenantRepository;
+        _currentUserService = currentUserService;
         _logger = logger;
     }
 
@@ -23,23 +27,28 @@ public class CreateTenantCommandHandler : IRequestHandler<CreateTenantCommand, R
     {
         try
         {
+            // Obter o usuário autenticado do JWT
+            var userId = _currentUserService.GetUserId();
+
+            var tenantMaster = 
+
+            if (string.IsNullOrWhiteSpace(userId))
+            {
+                return Result<CreateTenantResponse>.Error("Usuário não autenticado");
+            }
+
             // Validar se o domínio já existe
             if (await _tenantRepository.DomainExistsAsync(request.Domain))
             {
                 return Result<CreateTenantResponse>.Error("Domínio já está em uso");
             }
 
-            // Validar se o TenantMasterId foi fornecido
-            if (string.IsNullOrWhiteSpace(request.TenantMasterId))
-            {
-                return Result<CreateTenantResponse>.Error("TenantMasterId é obrigatório");
-            }
-
             var tenant = new TenantModel
             {
                 Name = request.Name,
                 Domain = request.Domain,
-                TenantMaster = request.TenantMasterId,
+                TenantMaster = 
+                CreatedBy = userId,
                 PrimaryColor = request.PrimaryColor ?? "#0066cc",
                 SecondaryColor = request.SecondaryColor ?? "#4d94ff",
                 Plan = request.Plan,

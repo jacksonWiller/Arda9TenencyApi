@@ -16,9 +16,9 @@
 	</ItemGroup>
 
 	<ItemGroup>
-	  <ProjectReference Include="..\Arda9Tenency.Application\Arda9Tenency.Application.csproj" />
-	  <ProjectReference Include="..\Arda9Tenency.Core\Arda9Tenency.Core.csproj" />
-	  <ProjectReference Include="..\Arda9Tenency.Domain\Arda9Tenency.Domain.csproj" />
+	  <ProjectReference Include="..\Arda9Tenant.Application\Arda9Tenant.Application.csproj" />
+	  <ProjectReference Include="..\Arda9Tenant.Core\Arda9Tenant.Core.csproj" />
+	  <ProjectReference Include="..\Arda9Tenant.Domain\Arda9Tenant.Domain.csproj" />
 	</ItemGroup>
 
 </Project>
