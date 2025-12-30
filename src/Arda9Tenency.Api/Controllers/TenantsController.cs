@@ -1,5 +1,6 @@
 using System.Net.Mime;
 using Arda9Template.Api.Application.Tenants.Commands.CreateTenant;
+using Arda9Template.Api.Application.Tenants.Commands.DeleteTenant;
 using Arda9Template.Api.Application.Tenants.Commands.UpdateTenant;
 using Arda9Template.Api.Application.Tenants.Commands.UploadLogo;
 using Arda9Template.Api.Application.Tenants.Queries.GetAllTenants;
@@ -125,29 +126,24 @@ public class TenantsController : ControllerBase
     }
 
     /// <summary>
-    /// Upload de logo do tenant
+    /// Atualiza o logo do tenant
     /// </summary>
     /// <param name="id">ID do tenant</param>
-    /// <param name="file">Arquivo de imagem (JPG, PNG, GIF, SVG)</param>
+    /// <param name="command">URL do logo</param>
     /// <returns>URL do logo atualizado</returns>
     /// <response code="200">Logo atualizado com sucesso</response>
-    /// <response code="400">Arquivo inválido</response>
+    /// <response code="400">URL inválida</response>
     /// <response code="404">Tenant não encontrado</response>
     /// <response code="500">Erro interno</response>
-    [HttpPost("{id}/logo")]
-    [Consumes(MediaTypeNames.Multipart.FormData)]
+    [HttpPatch("{id}/logo")]
+    [Consumes(MediaTypeNames.Application.Json)]
     [ProducesResponseType(typeof(UploadLogoResponse), StatusCodes.Status200OK)]
     [ProducesResponseType(StatusCodes.Status400BadRequest)]
     [ProducesResponseType(StatusCodes.Status404NotFound)]
     [ProducesResponseType(StatusCodes.Status500InternalServerError)]
-    public async Task<IActionResult> UploadLogo(Guid id, IFormFile file)
+    public async Task<IActionResult> UploadLogo(Guid id, [FromBody] UploadLogoCommand command)
     {
-        var command = new UploadLogoCommand
-        {
-            TenantId = id,
-            File = file
-        };
-
+        command.TenantId = id;
         var result = await _mediator.Send(command);
         return result.ToActionResult();
     }

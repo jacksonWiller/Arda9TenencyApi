@@ -1,4 +1,3 @@
-using Arda9Template.Api.Services;
 using Arda9Template.Domain.Repositories;
 using Ardalis.Result;
 using MediatR;
@@ -9,16 +8,13 @@ namespace Arda9Template.Api.Application.Tenants.Commands.UploadLogo;
 public class UploadLogoCommandHandler : IRequestHandler<UploadLogoCommand, Result<UploadLogoResponse>>
 {
     private readonly ITenantRepository _tenantRepository;
-    private readonly IS3Service _s3Service;
     private readonly ILogger<UploadLogoCommandHandler> _logger;
 
     public UploadLogoCommandHandler(
         ITenantRepository tenantRepository,
-        IS3Service s3Service,
         ILogger<UploadLogoCommandHandler> logger)
     {
         _tenantRepository = tenantRepository;
-        _s3Service = s3Service;
         _logger = logger;
     }
 
@@ -26,50 +22,45 @@ public class UploadLogoCommandHandler : IRequestHandler<UploadLogoCommand, Resul
     {
         try
         {
-            if (request.File == null || request.File.Length == 0)
+            if (string.IsNullOrWhiteSpace(request.LogoUrl))
             {
-                return Result<UploadLogoResponse>.("Arquivo não fornecido");
+                return Result<UploadLogoResponse>.Invalid(new List<ValidationError>
+                {
+                    new ValidationError
+                    {
+                        Identifier = nameof(request.LogoUrl),
+                        ErrorMessage = "URL do logo não fornecida"
+                    }
+                });
+            }
+
+            // Validar se é uma URL válida
+            if (!Uri.TryCreate(request.LogoUrl, UriKind.Absolute, out var uriResult)
+                || (uriResult.Scheme != Uri.UriSchemeHttp && uriResult.Scheme != Uri.UriSchemeHttps))
+            {
+                return Result<UploadLogoResponse>.Invalid(new List<ValidationError>
+                {
+                    new ValidationError
+                    {
+                        Identifier = nameof(request.LogoUrl),
+                        ErrorMessage = "URL do logo inválida"
+                    }
+                });
             }
 
             var tenant = await _tenantRepository.GetByIdAsync(request.TenantId);
 
             if (tenant == null)
             {
-                return Result<UploadLogoResponse>.Failure("Tenant não encontrado");
-            }
-
-            // Validar tipo de arquivo (apenas imagens)
-            var allowedExtensions = new[] { ".jpg", ".jpeg", ".png", ".gif", ".svg" };
-            var fileExtension = Path.GetExtension(request.File.FileName).ToLower();
-
-            if (!allowedExtensions.Contains(fileExtension))
-            {
-                return Result<UploadLogoResponse>.Failure("Tipo de arquivo não permitido. Use: JPG, PNG, GIF ou SVG");
-            }
-
-            // Validar tamanho (max 5MB)
-            if (request.File.Length > 5 * 1024 * 1024)
-            {
-                return Result<UploadLogoResponse>.Failure("Arquivo muito grande. Tamanho máximo: 5MB");
-            }
-
-            // Upload para S3 (bucket de logos)
-            var bucketName = "arda9-tenants-logos"; // Bucket específico para logos
-            var key = $"tenants/{request.TenantId}/logo{fileExtension}";
-
-            using var stream = request.File.OpenReadStream();
-            var uploadResult = await _s3Service.UploadFileAsync(bucketName, key, stream, request.File.ContentType);
-
-            if (!uploadResult.IsSuccess)
-            {
-                return Result<UploadLogoResponse>.Failure("Erro ao fazer upload do logo");
+                return Result<UploadLogoResponse>.NotFound("Tenant não encontrado");
             }
 
             // Atualizar tenant com a URL do logo
-            tenant.Logo = uploadResult.Value.Url;
+            tenant.Logo = request.LogoUrl;
             await _tenantRepository.UpdateAsync(tenant);
 
-            _logger.LogInformation("Logo atualizado para tenant: {TenantId}", request.TenantId);
+            _logger.LogInformation("Logo atualizado para tenant: {TenantId} com URL: {LogoUrl}",
+                request.TenantId, request.LogoUrl);
 
             var response = new UploadLogoResponse
             {
@@ -82,8 +73,8 @@ public class UploadLogoCommandHandler : IRequestHandler<UploadLogoCommand, Resul
         }
         catch (Exception ex)
         {
-            _logger.LogError(ex, "Erro ao fazer upload do logo para tenant: {TenantId}", request.TenantId);
-            return Result<UploadLogoResponse>.Failure("Erro ao fazer upload do logo");
+            _logger.LogError(ex, "Erro ao atualizar logo do tenant: {TenantId}", request.TenantId);
+            return Result<UploadLogoResponse>.Error("Erro ao atualizar logo do tenant");
         }
     }
 }
