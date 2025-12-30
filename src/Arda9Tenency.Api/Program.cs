@@ -16,6 +16,7 @@ using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
 using System.Reflection;
 using System.Text.Json;
+using Arda9Template.Api.Application.Tenants.Commands.CreateTenant;
 
 
 var builder = WebApplication.CreateBuilder(args);
@@ -82,15 +83,17 @@ builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
 
 builder.Services.AddAuthorization();
 
+// Registrar MediatR do assembly da Application onde os Command/Query handlers estão
 builder.Services.AddMediatR(cfg =>
 {
-    cfg.RegisterServicesFromAssembly(Assembly.GetExecutingAssembly());
-
-    // Adicionar behaviors (opcional)
+    cfg.RegisterServicesFromAssembly(typeof(CreateTenantCommandHandler).Assembly);
+    
+    // Adicionar behaviors
     cfg.AddBehavior(typeof(IPipelineBehavior<,>), typeof(LoggingBehavior<,>));
 });
 
-builder.Services.AddValidatorsFromAssembly(Assembly.GetExecutingAssembly());
+// Registrar FluentValidation validators do assembly da Application onde os validators estão
+builder.Services.AddValidatorsFromAssembly(typeof(CreateTenantCommandHandler).Assembly);
 
 // Configurar AutoMapper
 builder.Services.AddAutoMapper(Assembly.GetExecutingAssembly());
