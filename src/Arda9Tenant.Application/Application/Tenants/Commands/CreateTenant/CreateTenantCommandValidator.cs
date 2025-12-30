@@ -32,5 +32,30 @@ public class CreateTenantCommandValidator : AbstractValidator<CreateTenantComman
             .Matches(@"^#[0-9A-Fa-f]{6}$")
             .When(x => !string.IsNullOrEmpty(x.SecondaryColor))
             .WithMessage("Cor secundária deve estar no formato hexadecimal (#RRGGBB)");
+
+        RuleFor(x => x.LogoIcon)
+            .MaximumLength(500)
+            .When(x => !string.IsNullOrEmpty(x.LogoIcon))
+            .WithMessage("URL do logo ícone não pode ter mais de 500 caracteres")
+            .Must(BeAValidUrl)
+            .When(x => !string.IsNullOrEmpty(x.LogoIcon))
+            .WithMessage("URL do logo ícone deve ser uma URL válida");
+
+        RuleFor(x => x.LogoFull)
+            .MaximumLength(500)
+            .When(x => !string.IsNullOrEmpty(x.LogoFull))
+            .WithMessage("URL do logo completo não pode ter mais de 500 caracteres")
+            .Must(BeAValidUrl)
+            .When(x => !string.IsNullOrEmpty(x.LogoFull))
+            .WithMessage("URL do logo completo deve ser uma URL válida");
+    }
+
+    private bool BeAValidUrl(string? url)
+    {
+        if (string.IsNullOrEmpty(url))
+            return true;
+
+        return Uri.TryCreate(url, UriKind.Absolute, out var uriResult)
+            && (uriResult.Scheme == Uri.UriSchemeHttp || uriResult.Scheme == Uri.UriSchemeHttps);
     }
 }

@@ -22,59 +22,52 @@ public class UploadLogoCommandHandler : IRequestHandler<UploadLogoCommand, Resul
     {
         try
         {
-            if (string.IsNullOrWhiteSpace(request.LogoUrl))
-            {
-                return Result<UploadLogoResponse>.Invalid(new List<ValidationError>
-                {
-                    new ValidationError
-                    {
-                        Identifier = nameof(request.LogoUrl),
-                        ErrorMessage = "URL do logo não fornecida"
-                    }
-                });
-            }
-
-            // Validar se é uma URL válida
-            if (!Uri.TryCreate(request.LogoUrl, UriKind.Absolute, out var uriResult)
-                || (uriResult.Scheme != Uri.UriSchemeHttp && uriResult.Scheme != Uri.UriSchemeHttps))
-            {
-                return Result<UploadLogoResponse>.Invalid(new List<ValidationError>
-                {
-                    new ValidationError
-                    {
-                        Identifier = nameof(request.LogoUrl),
-                        ErrorMessage = "URL do logo inválida"
-                    }
-                });
-            }
-
             var tenant = await _tenantRepository.GetByIdAsync(request.TenantId);
 
             if (tenant == null)
             {
-                return Result<UploadLogoResponse>.NotFound("Tenant não encontrado");
+                _logger.LogWarning("Tenant {TenantId} not found", request.TenantId);
+                return Result.NotFound();
             }
 
-            // Atualizar tenant com a URL do logo
-            tenant.Logo = request.LogoUrl;
+            // Atualizar logos fornecidos
+            if (!string.IsNullOrWhiteSpace(request.LogoUrl))
+            {
+                tenant.Logo = request.LogoUrl;
+                _logger.LogInformation("Logo updated for tenant: {TenantId}", request.TenantId);
+            }
+
+            if (!string.IsNullOrWhiteSpace(request.LogoIconUrl))
+            {
+                tenant.LogoIcon = request.LogoIconUrl;
+                _logger.LogInformation("LogoIcon updated for tenant: {TenantId}", request.TenantId);
+            }
+
+            if (!string.IsNullOrWhiteSpace(request.LogoFullUrl))
+            {
+                tenant.LogoFull = request.LogoFullUrl;
+                _logger.LogInformation("LogoFull updated for tenant: {TenantId}", request.TenantId);
+            }
+
             await _tenantRepository.UpdateAsync(tenant);
 
-            _logger.LogInformation("Logo atualizado para tenant: {TenantId} com URL: {LogoUrl}",
-                request.TenantId, request.LogoUrl);
+            _logger.LogInformation("Logos updated successfully for tenant: {TenantId}", request.TenantId);
 
             var response = new UploadLogoResponse
             {
                 TenantId = tenant.Id,
                 LogoUrl = tenant.Logo,
+                LogoIconUrl = tenant.LogoIcon,
+                LogoFullUrl = tenant.LogoFull,
                 UpdatedAt = tenant.UpdatedAt
             };
 
-            return Result<UploadLogoResponse>.Success(response);
+            return Result.Success(response);
         }
         catch (Exception ex)
         {
-            _logger.LogError(ex, "Erro ao atualizar logo do tenant: {TenantId}", request.TenantId);
-            return Result<UploadLogoResponse>.Error("Erro ao atualizar logo do tenant");
+            _logger.LogError(ex, "Error updating logos for tenant: {TenantId}", request.TenantId);
+            return Result.Error();
         }
     }
 }

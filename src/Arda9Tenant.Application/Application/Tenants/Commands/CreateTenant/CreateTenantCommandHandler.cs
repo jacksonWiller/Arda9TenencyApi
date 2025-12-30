@@ -27,37 +27,53 @@ public class CreateTenantCommandHandler : IRequestHandler<CreateTenantCommand, R
     {
         try
         {
-            // Obter o usuário autenticado do JWT
+            // Obter ID do usuário autenticado
             var userId = _currentUserService.GetUserId();
-
-            var tenantMaster = 
-
-            if (string.IsNullOrWhiteSpace(userId))
+            if (string.IsNullOrEmpty(userId))
             {
-                return Result<CreateTenantResponse>.Error("Usuário não autenticado");
+                _logger.LogWarning("UserId not found in token");
+                return Result.Forbidden();
+            }
+
+            // Converter userId para Guid
+            if (!Guid.TryParse(userId, out var userGuid))
+            {
+                _logger.LogWarning("UserId is not a valid GUID: {UserId}", userId);
+                return Result.Error();
+            }
+
+            // Verificar se o TenantMaster existe
+            var tenantMaster = await _tenantRepository.GetByIdAsync(request.TenantMasterId);
+            if (tenantMaster == null)
+            {
+                _logger.LogWarning("TenantMaster {TenantMasterId} not found", request.TenantMasterId);
+                return Result.Error();
             }
 
             // Validar se o domínio já existe
             if (await _tenantRepository.DomainExistsAsync(request.Domain))
             {
-                return Result<CreateTenantResponse>.Error("Domínio já está em uso");
+                _logger.LogWarning("Domain {Domain} already exists", request.Domain);
+                return Result.Error();
             }
 
             var tenant = new TenantModel
             {
                 Name = request.Name,
                 Domain = request.Domain,
-                TenantMaster = 
-                CreatedBy = userId,
+                TenantMaster = tenantMaster.Id,
+                CreatedBy = userGuid,
                 PrimaryColor = request.PrimaryColor ?? "#0066cc",
                 SecondaryColor = request.SecondaryColor ?? "#4d94ff",
+                LogoIcon = request.LogoIcon,
+                LogoFull = request.LogoFull,
                 Plan = request.Plan,
                 Status = "active"
             };
 
             await _tenantRepository.CreateAsync(tenant);
 
-            _logger.LogInformation("Tenant criado: {TenantId} - {TenantName} - TenantMaster: {TenantMaster}", 
+            _logger.LogInformation("Tenant created successfully: {TenantId} - {TenantName} - TenantMaster: {TenantMaster}",
                 tenant.Id, tenant.Name, tenant.TenantMaster);
 
             var response = new CreateTenantResponse
@@ -67,17 +83,19 @@ public class CreateTenantCommandHandler : IRequestHandler<CreateTenantCommand, R
                 Domain = tenant.Domain,
                 TenantMaster = tenant.TenantMaster,
                 Logo = tenant.Logo,
+                LogoIcon = tenant.LogoIcon,
+                LogoFull = tenant.LogoFull,
                 Status = tenant.Status,
                 Plan = tenant.Plan,
                 CreatedAt = tenant.CreatedAt
             };
 
-            return Result<CreateTenantResponse>.Success(response);
+            return Result.Success(response);
         }
         catch (Exception ex)
         {
-            _logger.LogError(ex, "Erro ao criar tenant");
-            return Result<CreateTenantResponse>.Error("Erro ao criar tenant");
+            _logger.LogError(ex, "Error creating tenant: {TenantName}", request.Name);
+            return Result.Error();
         }
     }
 }

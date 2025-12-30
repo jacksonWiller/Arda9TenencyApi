@@ -25,13 +25,19 @@ public class TenantModel : DynamoSingleTableEntity
     public string Name { get; set; } = string.Empty;
 
     [DynamoDBProperty]
-    public string TenantMaster { get; set; } = string.Empty;
+    public Guid TenantMaster { get; set; }
 
     [DynamoDBProperty]
     public string Domain { get; set; } = string.Empty;
 
     [DynamoDBProperty]
     public string? Logo { get; set; }
+
+    [DynamoDBProperty]
+    public string? LogoIcon { get; set; }
+
+    [DynamoDBProperty]
+    public string? LogoFull { get; set; }
 
     [DynamoDBProperty]
     public string PrimaryColor { get; set; } = "#0066cc";
