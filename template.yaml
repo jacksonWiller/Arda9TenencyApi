@@ -1,7 +1,7 @@
 AWSTemplateFormatVersion: '2010-09-09'
 Transform: AWS::Serverless-2016-10-31
 Description: >
-  Sample SAM Template for Arda9Tenecy API
+  Sample SAM Template for Arda9Tenency API
 
 # More info about Globals: https://github.com/awslabs/serverless-application-model/blob/master/docs/globals.rst
 Globals:
@@ -13,8 +13,8 @@ Resources:
     Type: AWS::Serverless::Function # More info about Function Resource: https://github.com/awslabs/serverless-application-model/blob/master/versions/2016-10-31.md#awsserverlessfunction
     Properties:
       Description: A simple example includes a .NET Core WebAPI App with DynamoDB table.
-      CodeUri: ./src/Arda9Tenecy.Api/
-      Handler: Arda9Tenecy.Api
+      CodeUri: ./src/Arda9Tenency.Api/
+      Handler: Arda9Tenency.Api
       Runtime: dotnet8
       MemorySize: 1024
       Environment: # More info about Env Vars: https://github.com/awslabs/serverless-application-model/blob/master/versions/2016-10-31.md#environment-object
