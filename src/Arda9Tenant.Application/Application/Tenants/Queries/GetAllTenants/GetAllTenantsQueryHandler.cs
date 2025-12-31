@@ -34,13 +34,17 @@ public class GetAllTenantsQueryHandler : IRequestHandler<GetAllTenantsQuery, Res
                 Id = t.Id,
                 Name = t.Name,
                 Domain = t.Domain,
+                TenantMaster = t.TenantMaster,
+                LogoIcon = t.LogoIcon,
+                LogoFull = t.LogoFull,
                 PrimaryColor = t.PrimaryColor,
                 SecondaryColor = t.SecondaryColor,
                 Status = t.Status,
                 Plan = t.Plan,
                 ClientsCount = t.ClientsCount,
                 UsersCount = t.UsersCount,
-                CreatedAt = t.CreatedAt
+                CreatedAt = t.CreatedAt,
+                UpdatedAt = t.UpdatedAt
             }).ToList();
 
             var response = new GetAllTenantsResponse
