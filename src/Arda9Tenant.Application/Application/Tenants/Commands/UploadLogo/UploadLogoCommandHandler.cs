@@ -54,7 +54,7 @@ public class UploadLogoCommandHandler : IRequestHandler<UploadLogoCommand, Resul
                 UpdatedAt = tenant.UpdatedAt
             };
 
-            return Result.Success(response);
+            return Result.Success(response,"Logos updated successfully for tenant");
         }
         catch (Exception ex)
         {

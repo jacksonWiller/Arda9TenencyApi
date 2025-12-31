@@ -33,7 +33,7 @@ public class DeleteTenantCommandHandler : IRequestHandler<DeleteTenantCommand, R
 
             _logger.LogInformation("Tenant deletado: {TenantId}", request.Id);
 
-            return Result<bool>.Success(true);
+            return Result<bool>.Success(true, "Tenant deletado");
         }
         catch (Exception ex)
         {

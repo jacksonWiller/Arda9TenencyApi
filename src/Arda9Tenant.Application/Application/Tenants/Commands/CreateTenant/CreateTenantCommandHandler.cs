@@ -32,36 +32,39 @@ public class CreateTenantCommandHandler : IRequestHandler<CreateTenantCommand, R
             if (string.IsNullOrEmpty(userId))
             {
                 _logger.LogWarning("UserId not found in token");
-                return Result.Forbidden();
+                return Result<CreateTenantResponse>.Forbidden();
             }
 
             // Converter userId para Guid
             if (!Guid.TryParse(userId, out var userGuid))
             {
                 _logger.LogWarning("UserId is not a valid GUID: {UserId}", userId);
-                return Result.Error();
+                return Result<CreateTenantResponse>.Error("Invalid user identifier");
             }
 
             // Verificar se o TenantMaster existe
-            var tenantMaster = await _tenantRepository.GetByIdAsync(request.TenantMasterId);
-            if (tenantMaster == null)
+            if(request.TenantMasterId.HasValue && request.TenantMasterId.Value != Guid.Empty)
             {
-                _logger.LogWarning("TenantMaster {TenantMasterId} not found", request.TenantMasterId);
-                return Result.Error();
+                var tenantMaster = await _tenantRepository.GetByIdAsync(request.TenantMasterId.Value);
+                if (tenantMaster == null)
+                {
+                    _logger.LogWarning("TenantMaster {TenantMasterId} not found", request.TenantMasterId);
+                    return Result<CreateTenantResponse>.Error("TenantMaster not found");
+                }
             }
 
             // Validar se o domínio já existe
             if (await _tenantRepository.DomainExistsAsync(request.Domain))
             {
                 _logger.LogWarning("Domain {Domain} already exists", request.Domain);
-                return Result.Error();
+                return Result<CreateTenantResponse>.Error("Domain already exists");
             }
 
             var tenant = new TenantModel
             {
                 Name = request.Name,
                 Domain = request.Domain,
-                TenantMaster = tenantMaster.Id,
+                TenantMaster = request.TenantMasterId ?? Guid.Empty,
                 CreatedBy = userGuid,
                 PrimaryColor = request.PrimaryColor ?? "#0066cc",
                 SecondaryColor = request.SecondaryColor ?? "#4d94ff",
@@ -87,12 +90,12 @@ public class CreateTenantCommandHandler : IRequestHandler<CreateTenantCommand, R
                 CreatedAt = tenant.CreatedAt
             };
 
-            return Result.Success(response);
+            return Result.Success(response, "Tenant created successfully");
         }
         catch (Exception ex)
         {
             _logger.LogError(ex, "Error creating tenant: {TenantName}", request.Name);
-            return Result.Error();
+            return Result<CreateTenantResponse>.Error("Error creating tenant");
         }
     }
 }
