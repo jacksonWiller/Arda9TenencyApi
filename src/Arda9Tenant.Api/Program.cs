@@ -40,11 +40,11 @@ builder.Services.AddCors(options =>
     });
 });
 
-// Configurar as opções do AWS Cognito
+// Configurar as opï¿½ï¿½es do AWS Cognito
 builder.Services.Configure<AwsCognitoConfig>(
     builder.Configuration.GetSection("AwsCognito"));
 
-// Obter configuração do Cognito para usar na autenticação JWT
+// Obter configuraï¿½ï¿½o do Cognito para usar na autenticaï¿½ï¿½o JWT
 var cognitoConfig = builder.Configuration.GetSection("AwsCognito").Get<AwsCognitoConfig>();
 var userPoolId = cognitoConfig?.UserPoolId;
 var region = cognitoConfig?.Region;
@@ -64,7 +64,7 @@ builder.Services.Configure<RouteOptions>(options =>
     options.LowercaseQueryStrings = true;
 });
 
-// Configuração da autenticação JWT com AWS Cognito
+// Configuraï¿½ï¿½o da autenticaï¿½ï¿½o JWT com AWS Cognito
 builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
     .AddJwtBearer(options =>
     {
@@ -73,7 +73,7 @@ builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
         {
             ValidateIssuer = true,
             ValidIssuer = $"https://cognito-idp.{region}.amazonaws.com/{userPoolId}",
-            ValidateAudience = false, // Cognito não usa audience padrão
+            ValidateAudience = false, // Cognito nï¿½o usa audience padrï¿½o
             ValidateLifetime = true,
             ValidateIssuerSigningKey = true,
             ClockSkew = TimeSpan.Zero
@@ -83,7 +83,7 @@ builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
 
 builder.Services.AddAuthorization();
 
-// Registrar MediatR do assembly da Application onde os Command/Query handlers estão
+// Registrar MediatR do assembly da Application onde os Command/Query handlers estï¿½o
 builder.Services.AddMediatR(cfg =>
 {
     cfg.RegisterServicesFromAssembly(typeof(CreateTenantCommandHandler).Assembly);
@@ -92,7 +92,7 @@ builder.Services.AddMediatR(cfg =>
     cfg.AddBehavior(typeof(IPipelineBehavior<,>), typeof(LoggingBehavior<,>));
 });
 
-// Registrar FluentValidation validators do assembly da Application onde os validators estão
+// Registrar FluentValidation validators do assembly da Application onde os validators estï¿½o
 builder.Services.AddValidatorsFromAssembly(typeof(CreateTenantCommandHandler).Assembly);
 
 // Configurar AutoMapper
@@ -106,10 +106,10 @@ builder.Services.AddSwaggerGen(c =>
     {
         Title = "Arda9 Template API",
         Version = "v1",
-        Description = "API para gerenciamento de arquivos, pastas e buckets S3 usando AWS Lambda, DynamoDB, Cognito e S3 com autenticação JWT multi-tenant"
+        Description = "API para gerenciamento de arquivos, pastas e buckets S3 usando AWS Lambda, DynamoDB, Cognito e S3 com autenticaï¿½ï¿½o JWT multi-tenant"
     });
 
-    // Configuração para autenticação JWT no Swagger
+    // Configuraï¿½ï¿½o para autenticaï¿½ï¿½o JWT no Swagger
     c.AddSecurityDefinition("Bearer", new Microsoft.OpenApi.Models.OpenApiSecurityScheme
     {
         Description = "JWT Authorization header using the Bearer scheme. Example: \"Authorization: Bearer {token}\"",
@@ -135,11 +135,11 @@ builder.Services.AddSwaggerGen(c =>
     });
 });
 
-// Configuração da região AWS
+// Configuraï¿½ï¿½o da regiï¿½o AWS
 string awsRegion = Environment.GetEnvironmentVariable("AWS_REGION") ?? RegionEndpoint.USEast1.SystemName;
 var regionEndpoint = RegionEndpoint.GetBySystemName(awsRegion);
 
-// Registrar serviços AWS
+// Registrar serviï¿½os AWS
 builder.Services
     .AddSingleton<IAmazonDynamoDB>(new AmazonDynamoDBClient(regionEndpoint))
     .AddSingleton<IAmazonCognitoIdentityProvider>(new AmazonCognitoIdentityProviderClient(regionEndpoint))
@@ -150,14 +150,10 @@ builder.Services
 
 // Registrar Repositories
 builder.Services
-    .AddScoped<IBucketRepository, BucketRepository>()
-    .AddScoped<IFileRepository, FileRepository>()
-    .AddScoped<IFolderRepository, FolderRepository>()
     .AddScoped<ITenantRepository, TenantRepository>();
 
 // Registrar Services
 builder.Services
-    .AddScoped<IS3Service, S3Service>()
     .AddScoped<ICurrentUserService, CurrentUserService>();
 
 // Add AWS Lambda support
@@ -169,7 +165,7 @@ app.UseSwagger();
 app.UseSwaggerUI(c =>
 {
     c.SwaggerEndpoint("/swagger/v1/swagger.json", "Arda9 File API v1");
-    c.RoutePrefix = string.Empty; // Define o Swagger como página inicial
+    c.RoutePrefix = string.Empty; // Define o Swagger como pï¿½gina inicial
 });
 
 // Habilitar CORS
@@ -177,7 +173,7 @@ app.UseCors();
 
 app.UseHttpsRedirection();
 
-// Adicionar middleware de autenticação e autorização
+// Adicionar middleware de autenticaï¿½ï¿½o e autorizaï¿½ï¿½o
 app.UseAuthentication();
 app.UseAuthorization();
 
