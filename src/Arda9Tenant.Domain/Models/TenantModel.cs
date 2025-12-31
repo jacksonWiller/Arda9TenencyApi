@@ -31,9 +31,6 @@ public class TenantModel : DynamoSingleTableEntity
     public string Domain { get; set; } = string.Empty;
 
     [DynamoDBProperty]
-    public string? Logo { get; set; }
-
-    [DynamoDBProperty]
     public string? LogoIcon { get; set; }
 
     [DynamoDBProperty]

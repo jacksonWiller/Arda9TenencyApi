@@ -30,13 +30,6 @@ public class UploadLogoCommandHandler : IRequestHandler<UploadLogoCommand, Resul
                 return Result.NotFound();
             }
 
-            // Atualizar logos fornecidos
-            if (!string.IsNullOrWhiteSpace(request.LogoUrl))
-            {
-                tenant.Logo = request.LogoUrl;
-                _logger.LogInformation("Logo updated for tenant: {TenantId}", request.TenantId);
-            }
-
             if (!string.IsNullOrWhiteSpace(request.LogoIconUrl))
             {
                 tenant.LogoIcon = request.LogoIconUrl;
@@ -56,7 +49,6 @@ public class UploadLogoCommandHandler : IRequestHandler<UploadLogoCommand, Resul
             var response = new UploadLogoResponse
             {
                 TenantId = tenant.Id,
-                LogoUrl = tenant.Logo,
                 LogoIconUrl = tenant.LogoIcon,
                 LogoFullUrl = tenant.LogoFull,
                 UpdatedAt = tenant.UpdatedAt

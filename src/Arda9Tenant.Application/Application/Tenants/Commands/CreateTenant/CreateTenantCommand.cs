@@ -12,6 +12,4 @@ public class CreateTenantCommand : IRequest<Result<CreateTenantResponse>>
     public string? SecondaryColor { get; set; }
     public string Plan { get; set; } = "basic"; // basic, pro, enterprise
     public Guid TenantMasterId { get; set; }
-    public string? LogoIcon { get; set; }
-    public string? LogoFull { get; set; }
 }

@@ -35,7 +35,6 @@ public class GetTenantByIdQueryHandler : IRequestHandler<GetTenantByIdQuery, Res
                 Id = tenant.Id,
                 Name = tenant.Name,
                 Domain = tenant.Domain,
-                Logo = tenant.Logo,
                 PrimaryColor = tenant.PrimaryColor,
                 SecondaryColor = tenant.SecondaryColor,
                 Status = tenant.Status,

@@ -10,18 +10,9 @@ public class UploadLogoCommandValidator : AbstractValidator<UploadLogoCommand>
             .NotEmpty().WithMessage("ID do tenant é obrigatório");
 
         RuleFor(x => x)
-            .Must(x => !string.IsNullOrWhiteSpace(x.LogoUrl) ||
-                       !string.IsNullOrWhiteSpace(x.LogoIconUrl) ||
+            .Must(x => !string.IsNullOrWhiteSpace(x.LogoIconUrl) ||
                        !string.IsNullOrWhiteSpace(x.LogoFullUrl))
             .WithMessage("Pelo menos uma URL de logo deve ser fornecida");
-
-        RuleFor(x => x.LogoUrl)
-            .Must(BeAValidUrl)
-            .When(x => !string.IsNullOrWhiteSpace(x.LogoUrl))
-            .WithMessage("URL do logo deve ser uma URL válida (HTTP ou HTTPS)")
-            .MaximumLength(2048)
-            .When(x => !string.IsNullOrWhiteSpace(x.LogoUrl))
-            .WithMessage("URL do logo não pode exceder 2048 caracteres");
 
         RuleFor(x => x.LogoIconUrl)
             .Must(BeAValidUrl)

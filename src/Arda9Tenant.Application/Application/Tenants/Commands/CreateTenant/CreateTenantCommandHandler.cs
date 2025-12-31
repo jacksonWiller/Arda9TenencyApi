@@ -65,8 +65,6 @@ public class CreateTenantCommandHandler : IRequestHandler<CreateTenantCommand, R
                 CreatedBy = userGuid,
                 PrimaryColor = request.PrimaryColor ?? "#0066cc",
                 SecondaryColor = request.SecondaryColor ?? "#4d94ff",
-                LogoIcon = request.LogoIcon,
-                LogoFull = request.LogoFull,
                 Plan = request.Plan,
                 Status = "active"
             };
@@ -82,7 +80,6 @@ public class CreateTenantCommandHandler : IRequestHandler<CreateTenantCommand, R
                 Name = tenant.Name,
                 Domain = tenant.Domain,
                 TenantMaster = tenant.TenantMaster,
-                Logo = tenant.Logo,
                 LogoIcon = tenant.LogoIcon,
                 LogoFull = tenant.LogoFull,
                 Status = tenant.Status,
