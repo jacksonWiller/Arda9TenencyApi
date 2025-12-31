@@ -8,7 +8,7 @@ namespace Arda9Tenant.Api.Models;
 /// PK: TENANT#{TenantId}, SK: METADATA
 /// GSI1: DOMAIN#{Domain} -> Buscar tenant por domínio
 /// </summary>
-[DynamoDBTable("arda9-tenency-v1")]
+[DynamoDBTable("arda9-Tenant-v1")]
 public class TenantModel : DynamoSingleTableEntity
 {
     [DynamoDBIgnore]

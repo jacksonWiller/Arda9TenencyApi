@@ -3,7 +3,7 @@
 version = 0.2
 
 [default.global.parameters]
-stack_name = "arda9-file-api-v3"
+stack_name = "arda9-tenant-api-v1"
 
 [default.build.parameters]
 cached = true
