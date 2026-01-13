@@ -14,7 +14,7 @@ Resources:
     Properties:
       Description: A simple example includes a .NET Core WebAPI App with DynamoDB table.
       CodeUri: ./src/Arda9Tenant.Api/
-      Handler: Arda9Tenency.Api
+      Handler: Arda9Tenant.Api
       Runtime: dotnet8
       MemorySize: 1024
       Environment: # More info about Env Vars: https://github.com/awslabs/serverless-application-model/blob/master/versions/2016-10-31.md#environment-object
