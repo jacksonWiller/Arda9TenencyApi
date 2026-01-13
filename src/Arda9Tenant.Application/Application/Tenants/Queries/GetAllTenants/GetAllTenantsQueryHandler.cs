@@ -3,7 +3,7 @@ using Ardalis.Result;
 using MediatR;
 using Microsoft.Extensions.Logging;
 
-namespace Arda9Tenant.Api.Application.Tenants.Queries.GetAllTenants;
+namespace Arda9Tenant.Application.Application.Tenants.Queries.GetAllTenants;
 
 public class GetAllTenantsQueryHandler : IRequestHandler<GetAllTenantsQuery, Result<GetAllTenantsResponse>>
 {

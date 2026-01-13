@@ -3,7 +3,7 @@ using Ardalis.Result;
 using MediatR;
 using Microsoft.Extensions.Logging;
 
-namespace Arda9Tenant.Api.Application.Tenants.Commands.DeleteTenant;
+namespace Arda9Tenant.Application.Application.Tenants.Commands.DeleteTenant;
 
 public class DeleteTenantCommandHandler : IRequestHandler<DeleteTenantCommand, Result<bool>>
 {

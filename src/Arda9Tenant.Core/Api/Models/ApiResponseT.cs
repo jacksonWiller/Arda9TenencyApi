@@ -1,5 +1,4 @@
 using System.Text.Json.Serialization;
-using Arda9Tenant.Core.Api.Models;
 using Microsoft.AspNetCore.Http;
 
 namespace Arda9Tenant.Core.Api.Models;

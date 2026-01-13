@@ -1,6 +1,6 @@
 using System;
 
-namespace Core.Domain;
+namespace Arda9Tenant.Core.Domain;
 
 /// <summary>
 /// This is the base interface for all entities

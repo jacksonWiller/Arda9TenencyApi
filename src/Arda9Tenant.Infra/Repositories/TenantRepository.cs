@@ -1,10 +1,10 @@
 using Amazon.DynamoDBv2.DataModel;
 using Amazon.DynamoDBv2.DocumentModel;
 using Arda9Tenant.Domain.Repositories;
-using Arda9Tenant.Api.Models;
 using Microsoft.Extensions.Logging;
+using Arda9Tenant.Domain.Models;
 
-namespace Arda9Tenant.Api.Repositories;
+namespace Arda9Tenant.Infra.Repositories;
 
 public class TenantRepository : ITenantRepository
 {

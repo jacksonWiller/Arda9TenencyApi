@@ -1,16 +1,16 @@
 using System.Net.Mime;
-using Arda9Tenant.Api.Application.Tenants.Commands.CreateTenant;
-using Arda9Tenant.Api.Application.Tenants.Commands.DeleteTenant;
-using Arda9Tenant.Api.Application.Tenants.Commands.UpdateTenant;
-using Arda9Tenant.Api.Application.Tenants.Commands.UploadLogo;
-using Arda9Tenant.Api.Application.Tenants.Queries.GetAllTenants;
-using Arda9Tenant.Api.Application.Tenants.Queries.GetTenantById;
-using Core.Api.Extensions;
+using Arda9Tenant.Api.Extensions;
+using Arda9Tenant.Application.Application.Tenants.Commands.CreateTenant;
+using Arda9Tenant.Application.Application.Tenants.Commands.DeleteTenant;
+using Arda9Tenant.Application.Application.Tenants.Commands.UpdateTenant;
+using Arda9Tenant.Application.Application.Tenants.Commands.UploadLogo;
+using Arda9Tenant.Application.Application.Tenants.Queries.GetAllTenants;
+using Arda9Tenant.Application.Application.Tenants.Queries.GetTenantById;
 using MediatR;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
-namespace Arda9Tenency.Api.Controllers;
+namespace Arda9Tenant.Api.Controllers;
 
 [ApiController]
 [Route("api/[controller]")]

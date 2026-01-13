@@ -1,11 +1,11 @@
-using Arda9Tenant.Api.Models;
-using Arda9Tenant.Api.Services;
+using Arda9Tenant.Application.Services;
+using Arda9Tenant.Domain.Models;
 using Arda9Tenant.Domain.Repositories;
 using Ardalis.Result;
 using MediatR;
 using Microsoft.Extensions.Logging;
 
-namespace Arda9Tenant.Api.Application.Tenants.Commands.CreateTenant;
+namespace Arda9Tenant.Application.Application.Tenants.Commands.CreateTenant;
 
 public class CreateTenantCommandHandler : IRequestHandler<CreateTenantCommand, Result<CreateTenantResponse>>
 {

@@ -1,6 +1,6 @@
 using FluentValidation;
 
-namespace Arda9Tenant.Api.Application.Tenants.Commands.UpdateTenant;
+namespace Arda9Tenant.Application.Application.Tenants.Commands.UpdateTenant;
 
 public class UpdateTenantCommandValidator : AbstractValidator<UpdateTenantCommand>
 {

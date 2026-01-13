@@ -3,7 +3,7 @@ using Ardalis.Result;
 using MediatR;
 using Microsoft.Extensions.Logging;
 
-namespace Arda9Tenant.Api.Application.Tenants.Commands.UploadLogo;
+namespace Arda9Tenant.Application.Application.Tenants.Commands.UploadLogo;
 
 public class UploadLogoCommandHandler : IRequestHandler<UploadLogoCommand, Result<UploadLogoResponse>>
 {

@@ -1,7 +1,7 @@
 using Amazon.DynamoDBv2.DataModel;
-using Arda9Tenant.Api.Core.Infra;
+using Arda9Tenant.Core.Infra;
 
-namespace Arda9Tenant.Api.Models;
+namespace Arda9Tenant.Domain.Models;
 
 /// <summary>
 /// DTO for Tenant with DynamoDB single table design

@@ -1,7 +1,7 @@
 using Ardalis.Result;
 using MediatR;
 
-namespace Arda9Tenant.Api.Application.Tenants.Queries.GetTenantById;
+namespace Arda9Tenant.Application.Application.Tenants.Queries.GetTenantById;
 
 public class GetTenantByIdQuery : IRequest<Result<GetTenantByIdResponse>>
 {

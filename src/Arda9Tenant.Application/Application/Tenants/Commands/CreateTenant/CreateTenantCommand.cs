@@ -1,8 +1,7 @@
 using Ardalis.Result;
 using MediatR;
-using System.Text.Json.Serialization;
 
-namespace Arda9Tenant.Api.Application.Tenants.Commands.CreateTenant;
+namespace Arda9Tenant.Application.Application.Tenants.Commands.CreateTenant;
 
 public class CreateTenantCommand : IRequest<Result<CreateTenantResponse>>
 {

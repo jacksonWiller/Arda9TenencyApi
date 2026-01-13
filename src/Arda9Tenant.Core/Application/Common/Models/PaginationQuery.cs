@@ -1,4 +1,4 @@
-namespace Core.Application.Common.Models;
+namespace Arda9Tenant.Core.Application.Common.Models;
 
 public class PaginationQuery
 {

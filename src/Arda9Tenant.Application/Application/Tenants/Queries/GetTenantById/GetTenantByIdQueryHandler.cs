@@ -1,10 +1,9 @@
-using Arda9Tenant.Api.Application.Tenants.Queries.GetTenantById;
 using Arda9Tenant.Domain.Repositories;
 using Ardalis.Result;
 using MediatR;
 using Microsoft.Extensions.Logging;
 
-namespace Arda9Tenency.Application.Application.Tenants.Queries.GetTenantById;
+namespace Arda9Tenant.Application.Application.Tenants.Queries.GetTenantById;
 
 public class GetTenantByIdQueryHandler : IRequestHandler<GetTenantByIdQuery, Result<GetTenantByIdResponse>>
 {

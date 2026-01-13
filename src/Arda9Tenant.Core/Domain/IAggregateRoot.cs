@@ -1,4 +1,4 @@
-namespace Core.Domain;
+namespace Arda9Tenant.Core.Domain;
 
 /// <summary>
 /// Represents an interface for aggregate roots.

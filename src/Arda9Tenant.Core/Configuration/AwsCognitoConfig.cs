@@ -1,4 +1,4 @@
-namespace Core.Configuration
+namespace Arda9Tenant.Core.Configuration
 {
     public class AwsCognitoConfig
     {

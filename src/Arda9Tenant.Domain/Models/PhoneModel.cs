@@ -1,6 +1,6 @@
 using Amazon.DynamoDBv2.DataModel;
 
-namespace Arda9Tenant.Api.Models;
+namespace Arda9Tenant.Domain.Models;
 
 public class PhoneModel
 {

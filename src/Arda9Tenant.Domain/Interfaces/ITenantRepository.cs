@@ -1,4 +1,4 @@
-using Arda9Tenant.Api.Models;
+using Arda9Tenant.Domain.Models;
 
 namespace Arda9Tenant.Domain.Repositories;
 

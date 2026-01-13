@@ -1,6 +1,6 @@
 using FluentValidation;
 
-namespace Arda9Tenant.Api.Application.Tenants.Commands.UploadLogo;
+namespace Arda9Tenant.Application.Application.Tenants.Commands.UploadLogo;
 
 public class UploadLogoCommandValidator : AbstractValidator<UploadLogoCommand>
 {

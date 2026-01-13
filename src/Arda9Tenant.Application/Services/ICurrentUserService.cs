@@ -1,4 +1,4 @@
-namespace Arda9Tenant.Api.Services;
+namespace Arda9Tenant.Application.Services;
 
 public interface ICurrentUserService
 {

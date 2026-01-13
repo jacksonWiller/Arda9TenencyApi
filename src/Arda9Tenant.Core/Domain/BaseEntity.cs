@@ -1,4 +1,4 @@
-using Core.Domain;
+using Arda9Tenant.Core.Domain;
 using System;
 using System.Collections.Generic;
 
