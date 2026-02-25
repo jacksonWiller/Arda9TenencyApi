@@ -88,9 +88,9 @@ dotnet run
 
 #### **5. Acessar a API**
 
-- **Swagger UI**: https://localhost:50364
-- **HTTPS**: https://localhost:50364
-- **HTTP**: http://localhost:50365
+- **Swagger UI**: https://localhost:5001
+- **HTTPS**: https://localhost:5001
+- **HTTP**: http://localhost:5000
 
 ### **Variáveis de Ambiente (Automáticas)**
 
@@ -100,6 +100,19 @@ O arquivo `launchSettings.json` já configura:
   "ASPNETCORE_ENVIRONMENT": "Development",
   "AWS_REGION": "us-east-1"
 }
+```
+
+### **?? Erro de Porta em Uso?**
+
+Se você receber erro de porta, veja a documentação completa em `docs/SOLUCAO_ERRO_PORTA.md`
+
+**Solução Rápida:**
+```powershell
+# Verificar processo na porta
+netstat -ano | findstr :5001
+
+# Matar processo (substitua PID)
+taskkill /PID <PID> /F
 ```
 
 ---
@@ -301,7 +314,7 @@ aws cognito-idp initiate-auth \
 ### **Testar Endpoint Protegido**
 
 ```bash
-curl https://localhost:50364/api/tenants \
+curl https://localhost:5001/api/tenants \
   -H "Authorization: Bearer eyJraWQiOiJ...seu-token-aqui"
 ```
 
@@ -310,7 +323,7 @@ curl https://localhost:50364/api/tenants \
 ## ?? Testar a API
 
 ### **Swagger UI**
-1. Acesse: https://localhost:50364
+1. Acesse: https://localhost:5001
 2. Clique em **"Authorize"**
 3. Informe o token JWT: `Bearer {seu-token}`
 4. Teste os endpoints
@@ -319,7 +332,7 @@ curl https://localhost:50364/api/tenants \
 
 ```bash
 # Criar Tenant
-curl -X POST https://localhost:50364/api/tenants \
+curl -X POST https://localhost:5001/api/tenants \
   -H "Authorization: Bearer {token}" \
   -H "Content-Type: application/json" \
   -d '{
@@ -329,11 +342,11 @@ curl -X POST https://localhost:50364/api/tenants \
   }'
 
 # Listar Tenants
-curl https://localhost:50364/api/tenants \
+curl https://localhost:5001/api/tenants \
   -H "Authorization: Bearer {token}"
 
 # Obter Tenant por ID
-curl https://localhost:50364/api/tenants/{tenant-id} \
+curl https://localhost:5001/api/tenants/{tenant-id} \
   -H "Authorization: Bearer {token}"
 ```
 
@@ -489,7 +502,7 @@ Antes de fazer push para produção:
 - [ ] `dotnet build` executa sem erros
 - [ ] `sam build` executa sem erros
 - [ ] `sam local start-api` funciona corretamente
-- [ ] Swagger UI carrega em https://localhost:50364
+- [ ] Swagger UI carrega em https://localhost:5001
 - [ ] Autenticação JWT funciona
 - [ ] DynamoDB responde corretamente
 - [ ] Todos os testes passam (`dotnet test`)
